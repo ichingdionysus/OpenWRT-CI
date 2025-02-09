@@ -19,7 +19,21 @@ UPDATE_PACKAGE() {
 		mv -f $REPO_NAME $PKG_NAME
 	fi
 }
+# 更新插件列表
 
+# 更新Aria2插件
+UPDATE_PACKAGE "luci-app-aria2" "ningxiaopeng/luci-app-aria2" "master"
+
+# 更新Alist插件
+UPDATE_PACKAGE "alist" "alist-org/alist" "main" "pkg"
+UPDATE_PACKAGE "luci-app-alist" "sbwml/luci-app-alist" "main"
+
+# 更新Docker插件
+UPDATE_PACKAGE "luci-app-dockerman" "lisaac/luci-app-dockerman" "master"
+UPDATE_PACKAGE "luci-lib-docker" "lisaac/luci-lib-docker" "master"
+
+# 更新AdGuardHome插件
+UPDATE_PACKAGE "luci-app-adguardhome" "rufengsuixing/luci-app-adguardhome" "master"
 #UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
 UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-24.10"
 
