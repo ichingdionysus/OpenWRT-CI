@@ -28,9 +28,7 @@ UPDATE_PACKAGE "luci-app-aria2" "ningxiaopeng/luci-app-aria2" "master"
 UPDATE_PACKAGE "alist" "alist-org/alist" "main" "pkg"
 UPDATE_PACKAGE "luci-app-alist" "sbwml/luci-app-alist" "main"
 
-# 更新Docker插件
-UPDATE_PACKAGE "luci-app-dockerman" "lisaac/luci-app-dockerman" "master"
-UPDATE_PACKAGE "luci-lib-docker" "lisaac/luci-lib-docker" "master"
+
 
 # 更新AdGuardHome插件
 UPDATE_PACKAGE "luci-app-adguardhome" "rufengsuixing/luci-app-adguardhome" "master"
