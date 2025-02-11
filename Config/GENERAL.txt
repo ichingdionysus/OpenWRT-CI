@@ -10,16 +10,7 @@ CONFIG_PACKAGE_libdevmapper=y
 CONFIG_PACKAGE_libseccomp=y
 
 
-# 添加aria2及其Web界面
-CONFIG_PACKAGE_luci-app-aria2=y
-CONFIG_PACKAGE_aria2=y
-# 添加Alist网盘列表
-CONFIG_PACKAGE_luci-app-alist=y
-CONFIG_PACKAGE_alist=y
 
-# 添加AdGuardHome广告拦截
-CONFIG_PACKAGE_luci-app-adguardhome=y
-CONFIG_PACKAGE_adguardhome=y
 
 #科学插件调整
 CONFIG_PACKAGE_luci-app-homeproxy=y
