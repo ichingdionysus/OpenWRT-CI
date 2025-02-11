@@ -1,18 +1,16 @@
-# ===================== Docker 插件 =====================
+# ===== Docker 插件 =====
 CONFIG_PACKAGE_luci-app-dockerman=y
 CONFIG_PACKAGE_dockerd=y
+
+# ===== 使用官方源 =====
 CONFIG_PACKAGE_luci-lib-docker=y
 
-# ===== Docker 核心依赖 =====
-CONFIG_PACKAGE_containerd=y
-CONFIG_PACKAGE_runc=y
-CONFIG_PACKAGE_libnetwork=y
-CONFIG_PACKAGE_libdevmapper=y
-CONFIG_PACKAGE_libseccomp=y
+# ===== 内核依赖 =====
+CONFIG_PACKAGE_kmod-fuse=y
+CONFIG_PACKAGE_kmod-br-netfilter=y
+CONFIG_PACKAGE_kmod-veth=y
 
-# ===== 存储驱动 =====
-CONFIG_PACKAGE_kmod-fs-btrfs=y
-CONFIG_PACKAGE_btrfs-progs=y
+
 
 
 
