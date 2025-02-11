@@ -19,6 +19,18 @@ UPDATE_PACKAGE() {
 		mv -f $REPO_NAME $PKG_NAME
 	fi
 }
+
+# 更新 Docker 插件
+UPDATE_PACKAGE "luci-app-docker" "lisaac/luci-app-docker" "master"
+UPDATE_PACKAGE "dockerd" "lisaac/luci-app-docker" "master" "pkg"
+
+# 更新 Docker 版本
+UPDATE_VERSION "docker"
+UPDATE_VERSION "dockerd"
+
+
+
+
 # 更新插件列表
 
 # 更新Aria2插件
