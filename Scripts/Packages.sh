@@ -19,10 +19,10 @@ UPDATE_PACKAGE() {
 		mv -f $REPO_NAME $PKG_NAME
 	fi
 }
-
 # 更新 Docker 插件
-UPDATE_PACKAGE "luci-app-docker" "lisaac/luci-app-docker" "master"
-UPDATE_PACKAGE "dockerd" "lisaac/luci-app-docker" "master" "pkg"
+UPDATE_PACKAGE "luci-app-dockerman" "lisaac/luci-app-dockerman" "master"
+UPDATE_PACKAGE "luci-lib-docker" "lisaac/luci-lib-docker" "master"
+UPDATE_PACKAGE "dockerd" "lisaac/luci-app-dockerman" "master" "pkg"
 
 # 更新 Docker 版本
 UPDATE_VERSION "docker"
