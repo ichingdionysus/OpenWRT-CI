@@ -49,7 +49,7 @@ UPDATE_PACKAGE() {
 
 # 更新Aria2插件
 UPDATE_PACKAGE "luci-app-aria2" "ningxiaopeng/luci-app-aria2" "master"
-
+UPDATE_PACKAGE "luci-app-adguardhome" "rufengsuixing/luci-app-adguardhome" "master"
 
 # 调用示例
 # UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "custom_name1 custom_name2"
