@@ -45,7 +45,16 @@ UPDATE_PACKAGE() {
 		mv -f $REPO_NAME $PKG_NAME
 	fi
 }
+# 更新插件列表
 
+# 更新Aria2插件
+UPDATE_PACKAGE "luci-app-aria2" "ningxiaopeng/luci-app-aria2" "master"
+
+# 更新Alist插件
+UPDATE_PACKAGE "alist" "alist-org/alist" "main" "pkg"
+UPDATE_PACKAGE "luci-app-alist" "sbwml/luci-app-alist" "main"
+# 更新AdGuardHome插件
+UPDATE_PACKAGE "luci-app-adguardhome" "rufengsuixing/luci-app-adguardhome" "master"
 # 调用示例
 # UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "custom_name1 custom_name2"
 # UPDATE_PACKAGE "open-app-filter" "destan19/OpenAppFilter" "master" "" "luci-app-appfilter oaf" 这样会把原有的open-app-filter，luci-app-appfilter，oaf相关组件删除，不会出现coremark错误。
