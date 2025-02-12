@@ -50,9 +50,7 @@ UPDATE_PACKAGE() {
 # 更新Aria2插件
 UPDATE_PACKAGE "luci-app-aria2" "ningxiaopeng/luci-app-aria2" "master"
 
-# 更新Alist插件
-UPDATE_PACKAGE "alist" "alist-org/alist" "main" "pkg"
-UPDATE_PACKAGE "luci-app-alist" "sbwml/luci-app-alist" "main"
+
 # 更新AdGuardHome插件
 UPDATE_PACKAGE "luci-app-adguardhome" "rufengsuixing/luci-app-adguardhome" "master"
 # 调用示例
