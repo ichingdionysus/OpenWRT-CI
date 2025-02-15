@@ -1,4 +1,5 @@
-
+name: 更新 Rust
+run: rustup update
 
 #CI项目
 name: QCA-ALL
