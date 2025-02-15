@@ -1,5 +1,4 @@
-- name: 更新 Rust
-  run: rustup update
+
 
 #CI项目
 name: QCA-ALL
@@ -23,7 +22,8 @@ on:
         default: 'false'
         required: false
         type: boolean
-
+- name: 更新 Rust
+  run: rustup update
 #CI权限
 permissions: write-all
 
