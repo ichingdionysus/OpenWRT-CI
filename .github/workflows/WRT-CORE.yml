@@ -63,17 +63,6 @@ jobs:
       - name: Checkout Projects
         uses: actions/checkout@main
 
-      - name: Free Disk Space
-        uses: FirelightFlagboy/gh-runner-free-disk-space@main
-        with:
-          android: true
-          dotnet: true
-          haskell: true
-          docker-images: true
-          large-packages: true
-          swap-storage: true
-          tool-cache: true
-
       - name: Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -125,8 +114,8 @@ jobs:
         if: env.WRT_TEST != 'true'
         uses: actions/cache@main
         with:
-          key: ${{env.WRT_TARGET}}-${{env.WRT_VER}}-${{env.WRT_HASH}}
-          restore-keys: ${{env.WRT_TARGET}}-${{env.WRT_VER}}
+          key: ${{env.WRT_CONFIG}}-${{env.WRT_VER}}-${{env.WRT_HASH}}
+          restore-keys: ${{env.WRT_CONFIG}}-${{env.WRT_VER}}
           path: |
             ./wrt/.ccache
             ./wrt/staging_dir/host*
@@ -148,7 +137,7 @@ jobs:
           fi
 
           if ${{steps.check-cache.outputs.cache-hit != 'true'}}; then
-            CACHE_LIST=$(gh cache list --key "$WRT_TARGET-$WRT_VER" | cut -f 1)
+            CACHE_LIST=$(gh cache list --key "$WRT_CONFIG-$WRT_VER" | cut -f 1)
             for CACHE_KEY in $CACHE_LIST; do
               gh cache delete $CACHE_KEY
             done
@@ -178,7 +167,7 @@ jobs:
 
           $GITHUB_WORKSPACE/Scripts/Settings.sh
 
-          make defconfig -j$(nproc) && make clean
+          make defconfig -j$(nproc) && make clean -j$(nproc)
 
       - name: Download Packages
         if: env.WRT_TEST != 'true'
@@ -217,7 +206,7 @@ jobs:
 
             find ./bin/targets/ -iregex ".*\(buildinfo\|json\|manifest\|sha256sums\|packages\)$" -exec rm -rf {} +
 
-            for FILE in $(find ./bin/targets/ -type f -iname "*.*") ; do
+            for FILE in $(find ./bin/targets/ -type f -iname "*$WRT_TARGET*") ; do
               EXT=$(basename $FILE | cut -d '.' -f 2-)
               NAME=$(basename $FILE | cut -d '.' -f 1 | grep -io "\($WRT_TARGET\).*")
               NEW_FILE="$WRT_VER"_"$NAME"_"$WRT_DATE"."$EXT"
@@ -225,6 +214,8 @@ jobs:
             done
 
             find ./bin/targets/ -type f -exec mv -f {} ./upload/ \;
+
+            make clean -j$(nproc)
           fi
 
           echo "WRT_KVER=${KVER:-none}" >> $GITHUB_ENV
@@ -248,6 +239,8 @@ jobs:
 
             源码：${{env.WRT_REPO}}
             分支：${{env.WRT_BRANCH}}
+            提交：${{env.WRT_HASH}}
+
             配置：${{env.WRT_CONFIG}}
             平台：${{env.WRT_TARGET}}
             地址：${{env.WRT_IP}}
